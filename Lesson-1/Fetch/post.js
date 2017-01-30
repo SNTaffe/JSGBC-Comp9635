@@ -2,4 +2,14 @@
 
 const jsonPlaceholderApiUrl = 'https://jsonplaceholder.typicode.com/posts';
 
-//Use fetch, look at MDN to figure out POST. https://developer.mozilla.org/en/docs/Web/API/Fetch_API
+// Use fetch, look at resources to figure out POST. Requies options and headers
+// https://developer.mozilla.org/en/docs/Web/API/Fetch_API
+// https://developers.google.com/web/updates/2015/03/introduction-to-fetch#post_request
+
+
+//When you send this, the response should be the same object with a randomly assigned id for the new post
+const postToAdd = {
+   "userId": 1,
+   "title": "Test",
+   "body": "This is a test post!"
+ };
