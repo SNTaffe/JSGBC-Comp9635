@@ -1,3 +1,4 @@
+<!-- https://developers.google.com/maps/documentation/javascript/adding-a-google-map -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,13 +14,13 @@
     <div id="map"></div>
     <script>
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
+        const toronto = {lat: 43.6532, lng: -79.3832};
+        const map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
-          center: uluru
+          center: toronto
         });
-        var marker = new google.maps.Marker({
-          position: uluru,
+        const marker = new google.maps.Marker({
+          position: toronto,
           map: map
         });
       }
