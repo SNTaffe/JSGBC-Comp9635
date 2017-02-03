@@ -1,0 +1,47 @@
+<!-- https://developers.google.com/maps/documentation/javascript/geocoding -->
+<!DOCTYPE html>
+  <html>
+    <head>
+      <style>
+         #map {
+          height: 400px;
+          width: 100%;
+         }
+      </style>
+    </head>
+    <body>
+      <h3>My Google Maps Demo</h3>
+      <div>
+        <div>
+          <span> Lat: </span>
+          <span id="lat" />
+        </div>
+        <div>
+          <span> Lng: </span>
+          <span id="lng"/>
+        </div>
+      </div>
+      <script>
+        function initGeocode() {
+          const address = "341 King Steet East, Toronto, ON, CA";
+          const geocoder = new google.maps.Geocoder();
+
+          geocoder.geocode({ address }, (result, status) => {
+            if( status === "OK") {
+              console.log(result);
+              const location = result[0].geometry.location;
+
+              // We call the functions lat() and lng() here
+              // Because it is not just a prop
+              // https://developers.google.com/maps/documentation/javascript/reference#LatLng
+              document.querySelector('#lat').innerHTML = location.lat();
+              document.querySelector('#lng').innerHTML = location.lng();
+            }
+          })
+        }
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjYF-lSmaZYttV9HufNDmEjifhiIjZPMc&callback=initGeocode">
+      </script>
+    </body>
+  </html>

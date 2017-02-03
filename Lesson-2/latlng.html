@@ -1,0 +1,84 @@
+<!-- Full example to mimic latlong.net -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> Latlong copy</title>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input id="userAddress" type="text"></input>
+      <button id="myButton"> Find </button>
+    </div>
+
+    <div>
+      <span> Lat: </span>
+      <span id="lat" />
+    </div>
+    <div>
+      <span> Lng: </span>
+      <span id="lng"/>
+    </div>
+
+    <h3>Search Result</h3>
+    <div id="map"></div>
+
+    <script type="text/javascript">
+
+    function initGeocode() {
+      const geocoder = new google.maps.Geocoder();
+
+      document.querySelector("#myButton").addEventListener('click', () => {
+            const address = document.querySelector("#userAddress").value;
+            geocoder.geocode({ address }, (result, status) => {
+              if( status === "OK") {
+                console.log(result);
+                const location = result[0].geometry.location;
+
+                // We call the functions lat() and lng() here
+                // Because it is not just a prop
+                // https://developers.google.com/maps/documentation/javascript/reference#LatLng
+                const lat = location.lat();
+                const lng = location.lng();
+                document.querySelector('#lat').innerHTML = lat;
+                document.querySelector('#lng').innerHTML = lng;
+
+                const latlng = {
+                  lat,
+                  lng
+                };
+
+                const map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 12,
+                  center: latlng,
+                });
+
+                const marker = new google.maps.Marker({
+                  position: latlng,
+                  map: map
+                });
+
+                const infoWindow = new google.maps.InfoWindow({
+                  content: "Lat: " + latlng.lat + " Lng: " + latlng.lng,
+                });
+
+                marker.addListener('click', () => {
+                  infoWindow.open(map, marker);
+                });
+              }
+            })
+          });
+    }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjYF-lSmaZYttV9HufNDmEjifhiIjZPMc&callback=initGeocode">
+    </script>
+  </body>
+</html>
