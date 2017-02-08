@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function calcDistance() {
+        //Creat new LatLng objects because computeDistance will NOT convert objects with
+        // lat/lng props.
+        const yongeAndKing = new google.maps.LatLng(43.649193, -79.377961);
+        const GBC = new google.maps.LatLng(43.651817, -79.365558);
+        const gardiner = new google.maps.LatLng(43.646588, -79.366095);
+        //Should display
+        console.log(google.maps.geometry.spherical.computeDistanceBetween(yongeAndKing, GBC));
+        console.log(google.maps.geometry.spherical.computeDistanceBetween(yongeAndKing, gardiner));
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=calcDistance&libraries=geometry">
+    </script>
+  </body>
+</html>
