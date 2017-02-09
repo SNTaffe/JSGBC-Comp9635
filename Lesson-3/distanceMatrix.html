@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function calcDistanceMatrix() {
+        //Creat new LatLng objects because computeDistance will NOT convert objects with
+        // lat/lng props.
+        const yongeAndKing = new google.maps.LatLng(43.649193, -79.377961);
+        const GBC = new google.maps.LatLng(43.651817, -79.365558);
+        const gardiner = new google.maps.LatLng(43.646588, -79.366095);
+
+        const distanceMatrixService = new google.maps.DistanceMatrixService();
+        distanceMatrixService.getDistanceMatrix({
+          origins: [ yongeAndKing ],
+          destinations: [ GBC, gardiner],
+          travelMode: 'WALKING',
+        }, handleDistanceResponse)
+
+        function handleDistanceResponse(response, status) {
+          if( status === 'OK') {
+            console.log(response);
+          }
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=calcDistanceMatrix">
+    </script>
+  </body>
+</html>

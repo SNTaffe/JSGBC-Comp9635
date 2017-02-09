@@ -7,15 +7,41 @@ const bikeShareURL = 'https://feeds.bikesharetoronto.com/stations/stations.json'
 
 let app = new koa();
 let router = new Router();
-let response = {};
+let fullData = {};
+let simpleData = {};
 
 app.use(cors());
 
+//Filter out bare minimum props we need for assignment
+const filterSimpleData = data => {
+  return data.stationBeanList.map( bean => {
+    const {
+      stAddress1,
+      latitude,
+      longitude,
+      status,
+      availableBikes,
+      testStation,
+      is_renting,
+    } = bean;
+
+    return {
+      stAddress1,
+      latitude,
+      longitude,
+      status,
+      availableBikes,
+      testStation,
+      is_renting,
+    };
+  });
+};
 const updateData = () => {
   fetch(bikeShareURL)
     .then( response => response.json())
     .then(data => {
-    response = data;
+    fullData = data;
+    simpleData = filterSimpleData(data);
     }).catch( err => fs.appendFile('log.txt', err))
   };
 
@@ -23,8 +49,12 @@ const updateData = () => {
 updateData();
 setInterval(updateData, 1000 * 60 * 60 * 6);
 
-router.get('/', function(ctx, next) {
-  ctx.body = response;
+router.get('/data/simple', function(ctx, next) {
+  ctx.body = simpleData;
+})
+
+router.get('/data/full', function(ctx, next) {
+  ctx.body = fullData;
 })
 app.use(router.routes())
    .use(router.allowedMethods());
