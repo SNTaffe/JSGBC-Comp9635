@@ -14,7 +14,7 @@ Copy this code into a terminal to setup nvm/node, clone this repo, and go to les
 ```
 cd ~/ &&
 git clone https://github.com/NicholasGWK/JSGBC-Comp9635.git &&
-source ~/.bash_profile &&
+touch  ~/.bash_profile &&
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash &&
 cd JSGBC-Comp9635/Lesson-4 &&
 nvm install node &&
