@@ -19,15 +19,13 @@
       } else {
        console.log('User cancelled login or did not fully authorize.');
       }
-  }, { scope: 'user_posts'});
+  });
       }
       function addLoginButtonOrShowUser() {
         FB.getLoginStatus( response => {
           if ( response.status === 'connected') {
             document.querySelector('#buttonOrData').innerHTML = 'Hello, user: ' + response.authResponse.userID;
-            FB.api('/me', response => {
-              console.log(response)
-            });
+            FB.api('/me/feed', response => console.log);
           } else {
             const buttonHTML = "<button onClick='fbLogin()'> Login with Facebook </input>";
             document.querySelector('#buttonOrData').innerHTML = buttonHTML;
