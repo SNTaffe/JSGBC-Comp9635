@@ -17,6 +17,6 @@ git clone https://github.com/NicholasGWK/JSGBC-Comp9635.git &&
 source ~/.bash_profile &&
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash &&
 cd JSGBC-Comp9635/Lesson-4 &&
-chmod 777 nodeSetup.sh &&
-./nodeSetup.sh
+nvm install node &&
+npm install yarn -g
 ```
