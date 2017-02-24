@@ -13,12 +13,12 @@ console.log(normalString, templateString);
 
 // Print "We are in <Location>" with and without template strings
 
-const location = 'Toronto';
+const ourLocation = 'Toronto';
 
-const regular = 'We are in ' + location;
-const withTempalte = `We are in ${location}`;
+const regular = 'We are in ' + ourLocation;
+const withTempalte = `We are in ${ourLocation}`;
 
-// console.log(regular, withTemplate);
+ console.log(regular, withTemplate);
 // Any JS expression will work though!
 
 const answer = 2 + 2;

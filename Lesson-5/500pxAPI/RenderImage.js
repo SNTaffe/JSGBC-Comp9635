@@ -1,4 +1,5 @@
-// Given the follow photo, write a function to render the image and author data on the page
+// Given the following photo, write a function to
+// render the image and author data on the page
 
 const photo = {
      "id": 4910421,
@@ -26,3 +27,15 @@ const photo = {
        "userpic_url": "http://acdn.500px.net/386047/f76ed05530afec6d1d0bd985b98a91ce0ce49049/1.jpg?0",
        "upgrade_status": 0
      }
+   }
+
+const renderPhoto = (photoObj, elementId) => {
+  // const { image_url, user } = photoObj
+  const image_url = photoObj.image_url;
+  const fullname = photoObj.user.fullname;
+
+  document.getElementById(elementId).innerHTML = `
+  <div> Photo by ${fullname} </div>
+  <img src="${image_url}" alt="Fanta Photo" />
+  `
+}

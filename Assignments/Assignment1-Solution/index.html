@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      JSGBC-COMP9635 Assignment 1 Solution
+    </title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div id="userInput"></div>
+      <div id="mapLegendContainer">
+        <div id="map"></div>
+        <div id="legend"></div>
+      </div>
+    </div>
+    <script defer src="./dataManipulation.js"></script>
+    <script defer src="./rendering.js"></script>
+    <script defer src="./dataFetching.js"></script>
+    <script defer src="./app.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=initApp&libraries=geometry">
+    </script>
+  </body>
+</html>
