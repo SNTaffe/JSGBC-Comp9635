@@ -7,10 +7,10 @@ var feature = 'popular';
 var baseUrl = 'https://api.500px.com/v1/'
 var photoUrl = 'photos'
 //apiUrl/photos?consumer_key=key&feature='popular'
-fetch(baseUrl + photoUrl + 'consumer_key=' + consumerKey + '&feature=' + feature)
+fetch(baseUrl + photoUrl + '?consumer_key=' + consumerKey + '&feature=' + feature)
   .then(function(response) {
     return response.json();
   })
   .then(function(data) {
     console.log(data);
-  }
+  });
