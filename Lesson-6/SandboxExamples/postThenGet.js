@@ -21,7 +21,7 @@ const options = {
 
 const apiKey = 'b2becbb33a01c2a1085888f14dda841901646b3d8543ac0a925275050cc82f81';
 
-const baseURL = 'http://138.197.158.83:8081/';
+const baseURL = 'http://138.197.158.83:8081';
 
 const photoId = 'inclass';
 
@@ -40,6 +40,7 @@ fetch(`${baseURL}/api/photos/${photoId}/comments?apiKey=${apiKey}`, options)
   return fetch(`${baseURL}/api/photos/${photoId}/comments?apiKey=${apiKey}`)
 }).then(function(response) {
     return response.json();
-}).then(function(data) => {
+}).then(function(data) {
     //Render HTML
+    console.log(data);
 });
