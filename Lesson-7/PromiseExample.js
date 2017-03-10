@@ -1,9 +1,11 @@
 // Shows that the .then callback always returns a promise
 
 
-const createPromise = (resolveVal) => new Promise( (resolve, reject) => {
-  resolve(resolveVal);
-});
+const createPromise = function(resolveVal) {
+  return new Promise(function(resolve, reject){
+    resolve(resolveVal);
+  });
+};
 
 createPromise('Test 1').then( data => {
   console.log(data);
@@ -29,13 +31,13 @@ createPromise('Test 1').then( data => {
 //So, we can also create and return promises, and the next callback will get the value
 // That THAT promise resolves with.
 
-createPromise('Test 4')
-  .then(data => {
-  console.log(data);
-  return createPromise('Test 4 second promise');
-}).then( data => {
-  console.log(data);
-});
+// createPromise('Test 4')
+//   .then(data => {
+//   console.log(data);
+//   return createPromise('Test 4 second promise');
+// }).then( data => {
+//   console.log(data);
+// });
 
 
 // This lets us chain async calls, like REST API calls, while only going one layer deep!
