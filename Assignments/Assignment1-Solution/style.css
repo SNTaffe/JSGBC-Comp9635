@@ -1,0 +1,35 @@
+#map {
+  height: 600px;
+  width: 800px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%
+  justify-content: center;
+  align-items: center;
+}
+
+#mapLegendContainer {
+  display:flex;
+  flex-direction: row;
+}
+
+#userInput {
+  margin: 20px;
+}
+
+#legend {
+  margin-left: 20px;
+}
+
+td {
+  text-align: center;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}

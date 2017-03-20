@@ -16,3 +16,19 @@ const locations = [
       "lng": -63.131070
     }
   ];
+
+
+  const content = [
+    {
+      content: "Toronto"
+    },
+    {
+      content: "GBC"
+    },
+    {
+      content: "Charlottetown"
+    },
+    {
+      content: "Bergen"
+    }
+  ]

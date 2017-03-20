@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="./locations.js"></script>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        const map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: locations[0],
+        });
+
+        const markers = locations.map( location => {
+            return new google.maps.Marker({
+              position: location,
+              map: map
+            });
+          });
+
+          const infoWindows = content.map( content => {
+            return new google.maps.InfoWindow(content);
+        });
+
+          markers.forEach( (marker, i) => {
+            marker.addListener('click', () => {
+              infoWindows[i].open(map, marker);
+            });
+          });
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjYF-lSmaZYttV9HufNDmEjifhiIjZPMc&callback=initMap">
+    </script>
+  </body>
+</html>

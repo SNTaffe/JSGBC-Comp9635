@@ -1,4 +1,4 @@
-<!-- https://developers.google.com/maps/documentation/javascript/adding-a-google-map -->
+<!--https://developers.google.com/maps/documentation/javascript/infowindows -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,12 +21,21 @@
         });
         const marker = new google.maps.Marker({
           position: toronto,
-          map: map
+          map: map,
+          title: "Toronto",
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: '<h1> Welcome to Toronto </h1>' + ' This is where we all live',
+        });
+
+        marker.addListener('click', () => {
+          infoWindow.open(map, marker);
         });
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjYF-lSmaZYttV9HufNDmEjifhiIjZPMc&callback=initMap">
     </script>
   </body>
 </html>

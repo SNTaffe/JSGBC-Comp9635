@@ -1,0 +1,11 @@
+{
+  "name": "node-fetch-example",
+  "version": "1.0.0",
+  "description": "Example of requiring an external JS file",
+  "main": "index.js",
+  "author": "Nick Kennedy",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^1.6.3"
+  }
+}

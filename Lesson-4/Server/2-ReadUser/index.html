@@ -1,0 +1,56 @@
+<!-- The script pulls in the Facebook SDK, which will automatically add the button to the div because of the class -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Facebook SDK demo</title>
+  </head>
+  <body>
+    <div id="buttonOrData"></div>
+    <script>
+      function fbLogin() {
+      console.log('what?');
+      FB.login(function(response) {
+      if (response.authResponse) {
+       console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me', function(response) {
+         console.log('Good to see you, ' + response.name + '.');
+       });
+      } else {
+       console.log('User cancelled login or did not fully authorize.');
+      }
+  });
+      }
+      function addLoginButtonOrShowUser() {
+        FB.getLoginStatus( response => {
+          if ( response.status === 'connected') {
+            document.querySelector('#buttonOrData').innerHTML = 'Hello, user: ' + response.authResponse.userID;
+            FB.api('/me/feed', response => console.log);
+          } else {
+            const buttonHTML = "<button onClick='fbLogin()'> Login with Facebook </input>";
+            document.querySelector('#buttonOrData').innerHTML = buttonHTML;
+          }
+        });
+      }
+      </script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1869447829968299',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        addLoginButtonOrShowUser();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+  </body>
+</html>
